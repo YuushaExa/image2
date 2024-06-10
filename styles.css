@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#editor {
+    display: flex;
+    align-items: flex-start;
+}
+
+#rulers {
+    position: relative;
+}
+
+#canvas-container {
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+#controls {
+    margin-left: 20px;
+}
+
+#object-controls {
+    margin-top: 20px;
+}
+
+canvas {
+    display: block;
+}
