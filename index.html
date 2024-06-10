@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanilla JS Image Editor</title>
-    <style>
-        #canvas-container {
-            border: 1px solid #ccc;
-            margin: 20px 0;
-        }
-    </style>
+    <title>Advanced Image Editor</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Vanilla JS Image Editor</h1>
-    <div id="controls">
-        <button id="add-image">Add Image</button>
-        <button id="add-rect">Add Rectangle</button>
-        <button id="add-text">Add Text</button>
-    </div>
-    <div id="canvas-container">
-        <canvas id="canvas" width="800" height="600"></canvas>
+    <h1>Advanced Image Editor</h1>
+    <div id="editor">
+        <div id="rulers">
+            <canvas id="ruler-top" width="800" height="20"></canvas>
+            <canvas id="ruler-left" width="20" height="600"></canvas>
+        </div>
+        <div id="canvas-container">
+            <canvas id="canvas" width="800" height="600"></canvas>
+        </div>
+        <div id="controls">
+            <button id="add-image">Add Image</button>
+            <button id="add-rect">Add Rectangle</button>
+            <button id="add-text">Add Text</button>
+            <div id="object-controls">
+                <label>X: <input type="number" id="object-x" step="1"></label>
+                <label>Y: <input type="number" id="object-y" step="1"></label>
+                <label>W: <input type="number" id="object-width" step="1"></label>
+                <label>H: <input type="number" id="object-height" step="1"></label>
+            </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
     <script src="app.js"></script>
