@@ -81,13 +81,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Listen for object selection
     canvas.on('selection:created', function(e) {
-        const selectedObject = e.target;
+        const selectedObject = e.selected[0];
         updateObjectInfo(selectedObject);
     });
 
     // Listen for object selection updates
     canvas.on('selection:updated', function(e) {
-        const selectedObject = e.target;
+        const selectedObject = e.selected[0];
         updateObjectInfo(selectedObject);
     });
 
