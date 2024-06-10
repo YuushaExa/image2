@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const canvas = new fabric.Canvas('canvas');
-    
+    const objectInfo = document.getElementById('objectInfo');
+
     // Add Text
     window.addText = function() {
         const text = new fabric.Textbox('Hello Fabric.js', {
@@ -61,13 +62,39 @@ document.addEventListener("DOMContentLoaded", function() {
         const activeObject = canvas.getActiveObject();
         if (activeObject) {
             canvas.remove(activeObject);
+            objectInfo.innerHTML = 'Select an object to see its size';
         }
     };
 
     // Clear Canvas
     window.clearCanvas = function() {
         canvas.clear();
+        objectInfo.innerHTML = 'Select an object to see its size';
     };
+
+    // Update object size display
+    function updateObjectInfo(object) {
+        const width = object.getScaledWidth();
+        const height = object.getScaledHeight();
+        objectInfo.innerHTML = `Width: ${width.toFixed(2)} px, Height: ${height.toFixed(2)} px`;
+    }
+
+    // Listen for object selection
+    canvas.on('selection:created', function(e) {
+        const selectedObject = e.target;
+        updateObjectInfo(selectedObject);
+    });
+
+    // Listen for object selection updates
+    canvas.on('selection:updated', function(e) {
+        const selectedObject = e.target;
+        updateObjectInfo(selectedObject);
+    });
+
+    // Clear size display when object is deselected
+    canvas.on('selection:cleared', function() {
+        objectInfo.innerHTML = 'Select an object to see its size';
+    });
 
     // Enable object controls
     canvas.on('object:selected', function(e) {
